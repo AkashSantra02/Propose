@@ -1,4 +1,4 @@
-# ❤️ Innovate-Arena
+# ❤️ Propose
 
 This is a simple animated web project created using HTML, CSS, and JavaScript.
 
