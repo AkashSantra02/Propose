@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Love Animation</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #0f0f1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial;
+}
+
+/* Button Style */
+button {
+    padding: 15px 35px;
+    font-size: 20px;
+    border-radius: 40px;
+    border: none;
+    background: #ff2e63;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Glow effect */
+button:hover {
+    box-shadow: 0 0 20px #ff2e63, 0 0 40px #ff2e63;
+    transform: scale(1.1);
+}
+
+/* Text Style */
+#text {
+    position: absolute;
+    font-size: 60px;
+    color: white;
+    text-align: center;
+}
+
+/* Emoji Style */
+.emoji {
+    position: absolute;
+    font-size: 25px;
+    animation: float 4s linear infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<button onclick="start()">Click Me ❤️</button>
+<div id="text"></div>
+
+<script>
+let words = ["I", "love", "you ❤️"];
+let i = 0;
+
+function start() {
+    document.querySelector("button").style.display = "none";
+    showWords();
+    createEmojis();
+}
+
+function showWords() {
+    if(i < words.length) {
+        document.getElementById("text").innerHTML += words[i] + " ";
+        i++;
+        setTimeout(showWords, 800);
+    }
+}
+
+function createEmojis() {
+    setInterval(() => {
+        let emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+
+        let emojis = ["💖","❤️","💕","💘","💝"];
+        emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+        emoji.style.left = Math.random() * 100 + "vw";
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 4000);
+
+    }, 200);
+}
+</script>
+
+</body>
+</html>
